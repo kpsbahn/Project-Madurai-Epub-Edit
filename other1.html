@@ -1,0 +1,60 @@
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> </head>
+
+<body>
+	<div class="container">
+		<h2>Acknowledgements Page</h2>
+    <hr>
+		<p>Click the button to copy to clipboard</p>
+		<div class="form-group">
+			<textarea class="col-sm-12 col-md-12 col-lg-12" style="height: 480px; font-size: 20px; font-family: monospace"> </textarea>
+        </div>
+        <p id="demo"></p>
+
+		<button id="btnCopy" class="btn btn-primary">Copy To Clipboard</button>
+	</div>
+	<script>
+	$(document).ready(function() {
+		$.urlParam = function(name) {
+			var results = new RegExp("[\?&]" + name + "=([^&#]*)").exec(window.location.href);
+			return results[1] || 0;
+		};
+
+		var templateContent = `<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ta" xml:lang="ta">
+  <head>
+    <title>Unknown</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="pm.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<p class="block_ack">Acknowledgements:</p>
+	<p class="block_1"> </p>
+	<p class="normaltwopages">${decodeURIComponent($.urlParam("p1"))}<br/>
+<br/>
+Epub : ${decodeURIComponent($.urlParam("p2"))}<br/></p>
+
+	<p class="normaltwopages">PM release# ${decodeURIComponent($.urlParam("p3"))} </p>
+	<p class="block_1"> </p>
+	<p class="block_9" id="calibre_pb_1"> </p>
+</body></html>`;
+		$("textarea").val(templateContent);
+        
+        
+        
+		$("#btnCopy").click(function() {
+            
+			$("textarea").select();
+			document.execCommand("copy");
+            
+		});
+	});
+	</script>
+</body>
+
+</html>

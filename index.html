@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="form-horizontal">
+			<h2>Edit Title Page</h2>
+			<hr>
+			<p>Please enter desired values in the text boxes and click the Go button</p>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Tamil -Title: </label>
+				<textarea id="p1" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></textarea>
+			</div>
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Tamil -Author Name: </label>
+				<textarea id="p2" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></textarea> 
+      </div>
+				<div class="form-group">
+				<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">English -Title: </label>
+				<textarea id="p3" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></textarea> 
+      </div>
+				<div class="form-group">
+				<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">English -Author Name: </label>
+				<textarea id="p4" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></textarea> 
+      </div>
+				<button id="btn" class="btn btn-primary">Go</button>
+			</div>
+		</div>
+  </div>
+	<script>
+		$(document).ready(function() {
+      $('#btn').click(function() {
+        var p1text = text_with_br($('#p1').val());
+        var p2text = text_with_br($('#p2').val());
+        var p3text = text_with_br($('#p3').val());
+        var p4text = text_with_br($('#p4').val());
+        var url = `other.html?p1=${encodeURIComponent(p1text)}&p2=${encodeURIComponent(p2text)}&p3=${encodeURIComponent(p3text)}&p4=${encodeURIComponent(p4text)}`;
+        window.open(url, '_blank');
+      })
+      var text_with_br = text => text.replace(/\n|\r|\r\n/g, "<br>");
+    })
+	</script>
+</body>
+
+</html>

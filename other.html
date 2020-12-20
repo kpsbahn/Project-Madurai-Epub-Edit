@@ -1,0 +1,82 @@
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> </head>
+
+<body>
+	<div class="container">
+		<h2>Title Page</h2>
+    <hr>
+		<p>Click the button to copy to clipboard</p>
+		<div class="form-group">
+			<textarea class="col-sm-12 col-md-12 col-lg-12" style="height: 480px; font-size: 20px; font-family: monospace"> </textarea>
+        </div>
+        <p id="demo"></p>
+
+        <button id="btnCopy" class="btn btn-primary">Copy To Clipboard</button>
+        <button id="btn001" class="btn btn-primary">Edit Ack</button>
+
+	</div>
+	<script>
+	$(document).ready(function() {
+		$.urlParam = function(name) {
+			var results = new RegExp("[\?&]" + name + "=([^&#]*)").exec(window.location.href);
+			return results[1] || 0;
+		};
+
+		var templateContent = `<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ta" xml:lang="ta">
+<head>
+<title>Unknown</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="pm.css" rel="stylesheet" type="text/css"/>
+<link href="page_styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="calibre">
+<p class="block_"><img src="images/image.jpeg" alt="Image" class="calibre1"/></p>
+<p class="block_1"> </p>
+<p class="block_1"> </p>
+<p id="p1" class="title">${decodeURIComponent($.urlParam("p1"))}</p>
+<p id="p2" class="title">${decodeURIComponent($.urlParam("p2"))}</p>
+<p class="block_3"> </p>
+<p class="block_3"> </p>
+<p id="p3" class="title">${decodeURIComponent($.urlParam("p3"))}</p>
+<p id="p4" class="title">${decodeURIComponent($.urlParam("p4"))}</p>
+<p class="block_1"> </p>
+<p class="normaltwopages">© Project Madurai, 1998</p>
+<p class="block_1"> </p>
+<p class="normaltwopages">Project Madurai is an open, voluntary, worldwide initiative devoted to preparation of electronic texts of tamil literary works and to distribute them free on the Internet.</p>
+<p class="block_1"> </p>
+<p class="normaltwopages">Details of Project Madurai are available at the website</p>
+<p class="block_1"> </p>
+<p class="normaltwopages"><a href="https://projectmadurai.org/" class="text_">https://projectmadurai.org/</a></p>
+<p class="block_1"> </p>
+<p class="block_6">You are welcome to freely distribute this file, provided this header page is kept intact. </p>
+<p class="block_1"> </p>
+<p class="block_7" id="calibre_pb_0"> </p>
+</body>
+</html>`;
+		$("textarea").val(templateContent);
+        
+        
+        
+		$("#btnCopy").click(function() {
+            
+			$("textarea").select();
+			document.execCommand("copy");
+            
+		});
+        
+        $("#btn001").click(function() {
+            var url = `001.html`;
+            window.open(url, '_blank');      
+			
+            
+		});
+	});
+	</script>
+</body>
+
+</html>
